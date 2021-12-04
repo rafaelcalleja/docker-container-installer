@@ -1,3 +1,3 @@
 FROM alpine
 
-COPY Makefile /src
+COPY /src /src
