@@ -1,5 +1,5 @@
 IMG_REPO ?= rafaelcalleja
-IMG_TAG ?= 0.0.1
+IMG_TAG ?= $(shell cat VERSION)
 IMG_NAME ?= docker-container-installer
 
 default: image
