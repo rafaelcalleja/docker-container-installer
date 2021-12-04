@@ -16,6 +16,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Docker Test
         run: make test
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Bump version and push tag
         id: release
         uses: anothrNick/github-tag-action@1.35.0
