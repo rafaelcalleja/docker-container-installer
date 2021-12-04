@@ -16,6 +16,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Docker Test
         run: make test
+      - uses: AutoModality/action-clean@v1
+      - name: sleep 10 sec
+        run: sleep 10
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Bump version and push tag
