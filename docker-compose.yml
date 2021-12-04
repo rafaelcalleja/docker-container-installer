@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  sut:
+    build: .
+    command: >
+      bash -c "/entrypoint.sh --repository $${DCI_DOCKER_REPOSITORY} --src $${DCI_CONTAINER_SRC} --dest $${DCI_INSTALL_PATH} --container_name $${DCI_CONTAINER_NAME}"
+    entrypoint: ""
+    volumes:
+      - ${DCI_INSTALL_PATH}:${DCI_INSTALL_PATH}
+      - ${DOCKER_SOCKET:-/var/run/docker.sock}:/var/run/docker.sock
+    environment:
+      DCI_CONTAINER_NAME: ${DCI_CONTAINER_NAME:-docker-container-installer}
+      DCI_DOCKER_REPOSITORY:  ${DCI_DOCKER_REPOSITORY:?err docker repository required!}
+      DCI_CONTAINER_SRC: ${DCI_CONTAINER_SRC:?err docker source path required!}
+      DCI_INSTALL_PATH: ${DCI_INSTALL_PATH:?err local destination path required!}
+      DOCKER_SOCKET: ${DOCKER_SOCKET:-/var/run/docker.sock}

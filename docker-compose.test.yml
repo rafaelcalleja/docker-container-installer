@@ -1,0 +1,7 @@
+version: '3.7'
+services:
+  sut:
+    privileged: true
+    build:
+      context: .
+      dockerfile: docker-hub/Dockerfile
